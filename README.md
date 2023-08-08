@@ -6,8 +6,8 @@ This is a solution to the [Body Mass Index Calculator challenge on Frontend Ment
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Expected behaviour](#expected-behaviour)
-  - [Added features](#added-features)
+    - [Expected behaviour](#expected-behaviour)
+    - [Added features](#added-features)
   - [Links](#links)
   - [Screenshot](#screenshot)
 - [My process](#my-process)
@@ -37,15 +37,13 @@ Below you will find the BMI ranges and their weight classifications. Based on th
 
 Add the individual's healthy weight range based on the lower and upper BMI categorisations and the person's height.
 
-### Added features
-
-- Additional breakpoint for tablet with 2 columns
+<!-- ### Added features -->
 
 ### Links
 
 <!-- - [Solution on Frontend Mentor]() -->
 
-<!-- - [Live site]() -->
+- [Live site](https://fm-bmi-calculator-9000.netlify.app/)
 
 ### Screenshot
 

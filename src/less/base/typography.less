@@ -1,1 +1,17 @@
 @import "../abstracts/index.less";
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 400 600;
+  src: url("/assets/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+:where(body) {
+  font: 400 1rem/150% "Inter", sans-serif;
+  color: @clr-gunmetal;
+}
+
+:where(h1, h2, h3, h4, h5) {
+  line-height: 110%;
+  font-weight: 600;
+}
