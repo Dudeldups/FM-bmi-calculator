@@ -7,6 +7,8 @@ import Limitations from "./components/Limitations/Limitations";
 export default function App() {
   return (
     <div className="outer-container">
+      <div className="background-box"></div>
+
       <SiteHeader />
       <main>
         <CTA />

@@ -11,7 +11,7 @@ export default function Result({}: Props) {
       </div>
       <p className="result__desc">
         Your BMI suggests you’re a healthy weight. Your ideal weight is between
-        63.3kgs - 85.2kgs.
+        <span className="bold"> 63.3kgs - 85.2kgs</span>.
       </p>
     </section>
   );

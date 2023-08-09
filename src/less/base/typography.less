@@ -8,12 +8,17 @@
 
 :where(body) {
   font: 400 1rem/150% "Inter", sans-serif;
-  color: @clr-gunmetal;
+  color: @clr-electric-blue;
 }
 
-:where(h1, h2, h3, h4, h5) {
-  line-height: 110%;
+.bold {
   font-weight: 600;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  line-height: 110%;
+  .bold();
+  color: @clr-gunmetal;
 }
 
 .main-header {
@@ -38,19 +43,43 @@
 .radio__label {
   font-weight: 600;
   line-height: 150%;
+  color: @clr-gunmetal;
 }
 
 .text {
   &__label {
     font-size: 0.875rem;
     line-height: 150%;
-    color: @clr-electric-blue;
   }
 
-  &__unit {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: -0.075rem;
-    color: @clr-blue;
+  // &__unit {
+  //   font-size: 1.5rem;
+  //   font-weight: 600;
+  //   letter-spacing: -0.075rem;
+  //   color: @clr-blue;
+  // }
+}
+
+.result {
+  color: white;
+
+  &__title {
+    color: white;
+  }
+
+  &__number {
+    font-size: 3rem;
+    line-height: 110%;
+  }
+
+  &__desc {
+    font-size: 0.875rem;
+  }
+}
+
+.explanation {
+  &__title {
+    font-size: 2rem;
+    letter-spacing: -0.1rem;
   }
 }
