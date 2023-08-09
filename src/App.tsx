@@ -6,7 +6,7 @@ import Limitations from "./components/Limitations/Limitations";
 
 export default function App() {
   return (
-    <>
+    <div className="outer-container">
       <SiteHeader />
       <main>
         <CTA />
@@ -14,6 +14,6 @@ export default function App() {
         <Suggestions />
         <Limitations />
       </main>
-    </>
+    </div>
   );
 }

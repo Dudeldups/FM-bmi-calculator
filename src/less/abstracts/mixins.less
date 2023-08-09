@@ -7,7 +7,7 @@
 ) {
   @slope: ((@max-size - @min-size) / (@max-breakpoint - @min-breakpoint));
   @slope-to-unit: round(unit(@slope * 100), 2);
-  @intercept-rem: round((@min-size - @slope * @min-breakpoint), 2);
+  @intercept-rem: round(@min-size - @slope * @min-breakpoint, 2);
   @min-size-rem: round(@min-size, 2);
   @max-size-rem: round(@max-size, 2);
   @result: ~"clamp(@{min-size-rem}, @{slope-to-unit}@{unit} + @{intercept-rem}, @{max-size-rem})";
@@ -15,4 +15,8 @@
 
 .px2em(@px) {
   @result: unit(@px / 16) * 1em;
+}
+
+.padding-inline() {
+  padding-inline: .get-clamp(1.5rem, 2.5rem, 25rem, 40rem) [];
 }

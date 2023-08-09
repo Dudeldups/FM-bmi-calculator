@@ -15,3 +15,42 @@
   line-height: 110%;
   font-weight: 600;
 }
+
+.main-header {
+  &__title {
+    font-size: .get-clamp(3rem, 4rem, 48rem, 56rem) [];
+    letter-spacing: .get-clamp(-0.15rem, -0.2rem, 48rem, 56rem) [];
+    text-align: center;
+  }
+
+  &__desc {
+    text-align: center;
+  }
+}
+
+.calculator {
+  &__title {
+    font-size: 1.5rem;
+    letter-spacing: -0.075rem;
+  }
+}
+
+.radio__label {
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.text {
+  &__label {
+    font-size: 0.875rem;
+    line-height: 150%;
+    color: @clr-electric-blue;
+  }
+
+  &__unit {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.075rem;
+    color: @clr-blue;
+  }
+}
