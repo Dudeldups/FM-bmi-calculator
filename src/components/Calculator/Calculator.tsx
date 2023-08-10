@@ -16,6 +16,7 @@ export default function Calculator({}: Props) {
             id="metric"
             className="radio__input sr-only"
           />
+          <span className="radio__circle"></span>
           Metric
         </label>
 
@@ -26,6 +27,7 @@ export default function Calculator({}: Props) {
             id="imperial"
             className="radio__input sr-only"
           />
+          <span className="radio__circle"></span>
           Imperial
         </label>
       </div>

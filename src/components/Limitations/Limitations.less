@@ -1,9 +1,35 @@
 @import "../../less/abstracts/index.less";
 
 .limitations {
+  margin-top: 4.5rem;
   .padding-inline;
+  padding-bottom: 6rem;
+
+  &__desc {
+    margin-top: 2rem;
+  }
 }
 
 .grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 3.5rem;
   list-style: none;
+
+  &__item {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 1rem 2rem 3.5rem 0 rgba(143, 174, 207, 0.25);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__desc {
+    margin-top: 1rem;
+  }
 }
