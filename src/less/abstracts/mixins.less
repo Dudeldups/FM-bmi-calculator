@@ -13,6 +13,16 @@
   @result: ~"clamp(@{min-size-rem}, @{slope-to-unit}@{unit} + @{intercept-rem}, @{max-size-rem})";
 }
 
+.mq(@min, @max: false, @rules) {
+  if(ispixel(@min), @query = "@media screen and (min-width: .px2em(@{min})) {@{rules}}", @query = "@media screen and (min-width: @{min}) {@{rules}}")
+    @media
+    screen
+    and
+    (min-width: @min) {
+    @rules();
+  }
+}
+
 .px2em(@px) {
   @result: unit(@px / 16) * 1em;
 }
