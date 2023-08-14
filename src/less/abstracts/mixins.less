@@ -13,18 +13,29 @@
   @result: ~"clamp(@{min-size-rem}, @{slope-to-unit}@{unit} + @{intercept-rem}, @{max-size-rem})";
 }
 
-.mq(@min, @max: false, @rules) {
-  if(ispixel(@min), @query = "@media screen and (min-width: .px2em(@{min})) {@{rules}}", @query = "@media screen and (min-width: @{min}) {@{rules}}")
-    @media
-    screen
-    and
-    (min-width: @min) {
-    @rules();
+.mq(@breakpoints, @rules) {
+  & when (length(@breakpoints) = 1) {
+    @media screen and (min-width: @breakpoints) {
+      @rules();
+    }
   }
-}
 
-.px2em(@px) {
-  @result: unit(@px / 16) * 1em;
+  & when (length(@breakpoints) = 2) {
+    @min: extract(@breakpoints, 1);
+    @max: extract(@breakpoints, 2);
+
+    & when (@min = 0) {
+      @media screen and (max-width: @max) {
+        @rules();
+      }
+    }
+
+    & when not (@min = 0) {
+      @media screen and (min-width: @min) and (max-width: @max) {
+        @rules();
+      }
+    }
+  }
 }
 
 .padding-inline() {
