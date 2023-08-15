@@ -13,8 +13,13 @@
 .grid {
   display: grid;
   gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, auto));
   margin-top: 3.5rem;
   list-style: none;
+
+  .mq(@bp-tablet, {
+    gap: 1.5rem 0.95rem;
+  });
 
   &__item {
     padding: 1.5rem;

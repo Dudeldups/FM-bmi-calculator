@@ -47,10 +47,11 @@
   flex-direction: column;
   gap: 1rem;
 
-  // .tablet {
-  //   flex-direction: row;
-  //   gap: 1.5rem;
-  // }
+  .mq(@bp-tablet, {
+    flex-direction: row;
+    gap: 1.5rem;
+
+  });
 
   &__label {
     flex: 1;

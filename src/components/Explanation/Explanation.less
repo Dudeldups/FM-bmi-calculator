@@ -1,12 +1,29 @@
 @import "../../less/abstracts/index.less";
 
 .explanation {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   margin-top: 4.5rem;
+
+  .mq(@bp-tablet, {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+
+    & * {
+      flex: 1;
+    }
+  });
+
+  &__img {
+    .mq(@bp-tablet, {
+      transform: translateX(-15%);
+    });
+  }
 
   &__text {
     .padding-inline;
-
-    margin-top: 3rem;
   }
 
   &__desc {

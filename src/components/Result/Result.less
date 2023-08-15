@@ -1,17 +1,24 @@
 @import "../../less/abstracts/index.less";
 
 .result {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   padding: 2rem;
   border-radius: 1rem;
   background: linear-gradient(90deg, #345ff6 0%, #587dff 100%);
 
-  // border-radius: 1rem 62.4375rem 62.4375rem 1rem;
+  .mq(@bp-tablet, {
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10rem 62.4375rem 62.4375rem 10rem;
+
+    & * {
+      flex: 1;
+    }
+  });
 
   &__number {
     margin-top: 0.5rem;
-  }
-
-  &__desc {
-    margin-top: 1.5rem;
   }
 }

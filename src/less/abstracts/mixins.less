@@ -15,14 +15,14 @@
 
 .mq(@breakpoints, @rules) {
   & when (length(@breakpoints) = 1) {
-    @media screen and (min-width: @breakpoints) {
+    @media screen and (min-width: .convert(@breakpoints, em)[]) {
       @rules();
     }
   }
 
   & when (length(@breakpoints) = 2) {
-    @min: extract(@breakpoints, 1);
-    @max: extract(@breakpoints, 2);
+    @min: .convert(extract(@breakpoints, 1), em) [];
+    @max: .convert(extract(@breakpoints, 2), em) [];
 
     & when (@min = 0) {
       @media screen and (max-width: @max) {
