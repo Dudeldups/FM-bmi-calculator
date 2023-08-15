@@ -38,6 +38,19 @@
   }
 }
 
+.convert(@input, @output: rem) {
+  .value() when (ispixel(@input)) {
+    @result: unit((@input / 16), @output);
+  }
+  .value() when not (ispixel(@input)) {
+    @result: unit(@input, @output);
+  }
+  .value() when (@output = px) {
+    @result: unit((@input*16), @output);
+  }
+  .value();
+}
+
 .padding-inline() {
   padding-inline: .get-clamp(1.5rem, 2.5rem, 25rem, 40rem) [];
 }
