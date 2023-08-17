@@ -1,16 +1,18 @@
 @import "../../less/abstracts/index.less";
 
 .cta {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: .get-clamp(1.5rem, 2.5rem, 24rem, 40rem) [];
   .padding-inline;
-  max-width: 72.5rem;
+  max-width: 78rem;
   margin-inline: auto;
 
   .mq(@bp-desktop, {
-    display: flex;
-    gap: 8rem;
-
-    & * {
-      flex: 1;
-    }
+    flex-direction: row;
+    align-items: center;
+    gap: .get-clamp(2rem, 8rem, 65rem, 81.25rem)[];
+    margin-top: 1.5rem;
   });
 }

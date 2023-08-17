@@ -3,12 +3,11 @@
 .suggestions {
   position: relative;
   margin-top: 4.25rem;
-  .padding-inline;
   padding-block: 3.75rem;
-  max-width: 72.5rem;
-  margin-inline: auto;
 
   .mq(@bp-desktop, {
+    padding-top: 4.5rem;
+    padding-bottom: 6rem;
   });
 
   &::after {
@@ -24,7 +23,9 @@
     );
 
     .mq(@bp-desktop, {
-      border-radius: 2.1875rem;
+      left: .get-clamp(0rem, 2rem, 75rem, 81.25rem)[];
+;     right: .get-clamp(0rem, 2rem, 75rem, 81.25rem)[];
+;     border-radius: 2.1875rem;
     });
   }
 
@@ -33,10 +34,13 @@
     flex-direction: column;
     gap: 2.5rem;
     list-style: none;
+    .padding-inline;
 
     .mq(@bp-desktop, {
-      flex-direction: row;
-      gap: 2rem;
+        flex-direction: row;
+        gap: 2rem;
+        max-width: 78rem;
+        margin-inline: auto;
     });
   }
 

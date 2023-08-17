@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 3rem;
   margin-top: 4.5rem;
-  max-width: 72.5rem;
+  max-width: 78rem;
   margin-inline: auto;
 
   .mq(@bp-tablet, {
@@ -20,21 +20,24 @@
   });
 
   .mq(@bp-desktop, {
+    margin-top: 10rem;
     gap: 5.5rem;
   });
 
   &__img {
     .mq(@bp-tablet, {
-      transform: translateX(-15%);
+      transform: scale(1.15) translateX(-15%);
     });
 
     .mq(@bp-desktop, {
-      transform: translateX(0);
+      transform: unset;
     });
   }
 
   &__text {
-    .padding-inline;
+    .mq(0 @bp-tablet, {
+      .padding-inline;
+    });
   }
 
   &__desc {

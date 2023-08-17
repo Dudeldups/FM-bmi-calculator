@@ -22,14 +22,15 @@
 }
 
 .main-header {
+  text-align: center;
+
+  .mq(@bp-desktop, {
+    text-align: left;
+  });
+
   &__title {
     font-size: .get-clamp(3rem, 4rem, 48rem, 56rem) [];
     letter-spacing: .get-clamp(-0.15rem, -0.2rem, 48rem, 56rem) [];
-    text-align: center;
-  }
-
-  &__desc {
-    text-align: center;
   }
 }
 

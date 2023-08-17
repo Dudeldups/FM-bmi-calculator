@@ -4,11 +4,14 @@
   display: flex;
   flex-direction: column;
   gap: .get-clamp(1.5rem, 2rem, 24rem, 40rem) [];
-  margin-top: 3rem;
   padding: .get-clamp(1.5rem, 2rem, 25rem, 40rem) [];
   background-color: white;
   border-radius: 1rem;
   box-shadow: 1rem 2rem 3.5rem 0 rgba(143, 174, 207, 0.25);
+
+  .mq(@bp-desktop, {
+    min-width: .get-clamp(32rem, 35.25rem, 62.5rem, 68.75rem)[];
+  });
 }
 
 .radio {
@@ -50,7 +53,6 @@
   .mq(@bp-tablet, {
     flex-direction: row;
     gap: 1.5rem;
-
   });
 
   &__label {
