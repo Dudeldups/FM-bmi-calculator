@@ -7,7 +7,7 @@ This is a solution to the [Body Mass Index Calculator challenge on Frontend Ment
 - [Overview](#overview)
   - [The challenge](#the-challenge)
     - [Expected behaviour](#expected-behaviour)
-    - [Added features](#added-features)
+    <!-- - [Added features](#added-features) -->
   - [Links](#links)
   - [Screenshot](#screenshot)
 - [My process](#my-process)

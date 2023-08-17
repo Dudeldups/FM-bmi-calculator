@@ -2,4 +2,15 @@
 
 .cta {
   .padding-inline;
+  max-width: 72.5rem;
+  margin-inline: auto;
+
+  .mq(@bp-desktop, {
+    display: flex;
+    gap: 8rem;
+
+    & * {
+      flex: 1;
+    }
+  });
 }

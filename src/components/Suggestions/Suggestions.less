@@ -5,8 +5,10 @@
   margin-top: 4.25rem;
   .padding-inline;
   padding-block: 3.75rem;
+  max-width: 72.5rem;
+  margin-inline: auto;
 
-  .mq(@bp-tablet, {
+  .mq(@bp-desktop, {
   });
 
   &::after {
@@ -20,10 +22,22 @@
       #d6e6fe 0%,
       rgba(214, 252, 254, 0) 100%
     );
+
+    .mq(@bp-desktop, {
+      border-radius: 2.1875rem;
+    });
   }
 
   &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
     list-style: none;
+
+    .mq(@bp-desktop, {
+      flex-direction: row;
+      gap: 2rem;
+    });
   }
 
   &__item {
@@ -31,14 +45,14 @@
     flex-direction: column;
     gap: 2rem;
 
-    .mq(@bp-tablet, {
+    .mq(@bp-tablet @bp-desktop, {
       flex-direction: row;
       gap: 2.5rem;
     });
 
-    &:not(:first-child) {
-      margin-top: 2.5rem;
-    }
+    .mq(@bp-desktop, {
+      gap: 2.81rem;
+    });
   }
 
   &__img {

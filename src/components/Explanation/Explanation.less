@@ -5,8 +5,11 @@
   flex-direction: column;
   gap: 3rem;
   margin-top: 4.5rem;
+  max-width: 72.5rem;
+  margin-inline: auto;
 
   .mq(@bp-tablet, {
+    .padding-inline();
     flex-direction: row;
     align-items: center;
     gap: 1.5rem;
@@ -16,9 +19,17 @@
     }
   });
 
+  .mq(@bp-desktop, {
+    gap: 5.5rem;
+  });
+
   &__img {
     .mq(@bp-tablet, {
       transform: translateX(-15%);
+    });
+
+    .mq(@bp-desktop, {
+      transform: translateX(0);
     });
   }
 

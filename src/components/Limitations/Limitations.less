@@ -13,12 +13,12 @@
 .grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, auto));
   margin-top: 3.5rem;
   list-style: none;
 
   .mq(@bp-tablet, {
     gap: 1.5rem 0.95rem;
+    grid-template-columns: repeat(4, 1fr);
   });
 
   &__item {
@@ -26,6 +26,15 @@
     background-color: white;
     border-radius: 1rem;
     box-shadow: 1rem 2rem 3.5rem 0 rgba(143, 174, 207, 0.25);
+
+    .mq(@bp-tablet, {
+      padding: 2rem;
+      grid-column: span 2;
+
+      &:last-child {
+        grid-column: 2 / 4;
+      }
+    });
   }
 
   &__header {
