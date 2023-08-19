@@ -93,14 +93,20 @@
 }
 
 .limitations {
+  text-align: center;
+
+  .mq(@bp-desktop, {
+    text-align: left;
+  });
+
   &__title {
     font-size: 2rem;
     letter-spacing: -0.1rem;
-    text-align: center;
-  }
 
-  &__desc {
-    text-align: center;
+    .mq(@bp-desktop, {
+      font-size: 3rem;
+      letter-spacing: -0.15rem;
+    });
   }
 }
 

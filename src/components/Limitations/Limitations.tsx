@@ -3,13 +3,15 @@ import "./Limitations.less";
 export default function Limitations() {
   return (
     <section className="limitations">
-      <h2 className="limitations__title">Limitations of BMI</h2>
-      <p className="limitations__desc">
-        Although BMI is often a practical indicator of healthy weight, it is not
-        suited for every person. Specific groups should carefully consider their
-        BMI outcomes, and in certain cases, the measurement may not be
-        beneficial to use.
-      </p>
+      <div className="limitations__text">
+        <h2 className="limitations__title">Limitations of BMI</h2>
+        <p className="limitations__desc">
+          Although BMI is often a practical indicator of healthy weight, it is
+          not suited for every person. Specific groups should carefully consider
+          their BMI outcomes, and in certain cases, the measurement may not be
+          beneficial to use.
+        </p>
+      </div>
 
       <ul className="grid">
         <li className="grid__item">

@@ -1,9 +1,25 @@
 @import "../../less/abstracts/index.less";
 
 .limitations {
+  .max-width();
   margin-top: 4.5rem;
   .padding-inline;
   padding-bottom: 6rem;
+
+  .mq(@bp-desktop, {
+    display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    // grid-template-areas: 
+    //  text gender 
+    //  age muscle 
+    //  pregnancy race ;
+  });
+
+  &__text {
+    // grid-area: text;
+    // grid-column: 1;
+    // grid-row: 1;
+  }
 
   &__desc {
     margin-top: 2rem;
@@ -21,6 +37,11 @@
     grid-template-columns: 4fr 5fr 5fr 4fr;
   });
 
+  .mq(@bp-desktop, {
+    gap: 2rem;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+  });
+
   &__item {
     padding: 1.5rem;
     background-color: white;
@@ -33,6 +54,38 @@
 
       &:last-child {
         grid-column: 2 / 4;
+      }
+    });
+
+    .mq(@bp-desktop, {
+      &:nth-child(1) {
+        // grid-area: gender;
+        grid-column: 3 / span 2;
+        grid-row: 1;
+      }
+
+      &:nth-child(2) {
+        // grid-area: age;
+        grid-column: 1 / span 2;
+        grid-row: 2;
+      }
+
+      &:nth-child(3) {
+        grid-area: muscle;
+        grid-column: 3 / span 2;
+        grid-row: 2;
+      }
+
+      &:nth-child(4) {
+        grid-area: pregnancy;
+        grid-column: 1 / span 2;
+        grid-row: 3;
+      }
+
+      &:nth-child(5) {
+        grid-area: race;
+        grid-column: 3 / span 2;
+        grid-row: 3;
       }
     });
   }
