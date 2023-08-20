@@ -53,9 +53,17 @@
 }
 
 .text {
-  &__label {
+  &__type {
     font-size: 0.875rem;
+    font-weight: 400;
     line-height: 150%;
+    color: @clr-electric-blue;
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.075rem;
   }
 
   &__unit {
@@ -87,6 +95,11 @@
   &__title {
     font-size: 2rem;
     letter-spacing: -0.1rem;
+
+    .mq(@bp-desktop, {
+      font-size: 3rem;
+      letter-spacing: -0.15rem;
+    });
   }
 }
 

@@ -5,8 +5,7 @@
   flex-direction: column;
   gap: 3rem;
   margin-top: 4.5rem;
-  max-width: 78rem;
-  margin-inline: auto;
+  .max-width();
 
   .mq(@bp-tablet, {
     .padding-inline();
@@ -21,7 +20,7 @@
 
   .mq(@bp-desktop, {
     margin-top: 10rem;
-    gap: 5.5rem;
+    gap: 8rem;
   });
 
   &__img {
