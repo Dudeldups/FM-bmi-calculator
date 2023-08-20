@@ -22,7 +22,7 @@
 
   & when (length(@breakpoints) = 2) {
     @min: .convert(extract(@breakpoints, 1), em) [];
-    @max: .convert(extract(@breakpoints, 2), em) [];
+    @max: .convert(extract(@breakpoints, 2), em) [] - 0.01em;
 
     & when (@min = 0) {
       @media screen and (max-width: @max) {

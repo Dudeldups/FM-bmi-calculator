@@ -41,6 +41,7 @@ export default function Calculator({}: Props) {
             id="height"
             className="text__input"
           />
+          <span className="text__unit">cm</span>
         </label>
 
         <label htmlFor="weight" className="text__label">
@@ -51,6 +52,7 @@ export default function Calculator({}: Props) {
             id="weight"
             className="text__input"
           />
+          <span className="text__unit">kg</span>
         </label>
       </div>
 

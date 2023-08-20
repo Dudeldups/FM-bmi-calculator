@@ -29,8 +29,13 @@
   });
 
   &__title {
-    font-size: .get-clamp(3rem, 4rem, 48rem, 56rem) [];
-    letter-spacing: .get-clamp(-0.15rem, -0.2rem, 48rem, 56rem) [];
+    font-size: 3rem;
+    letter-spacing: -0.15rem;
+
+    .mq(@bp-desktop, {
+      font-size: 4rem;
+      letter-spacing: -0.2rem;
+    });
   }
 }
 
@@ -53,12 +58,12 @@
     line-height: 150%;
   }
 
-  // &__unit {
-  //   font-size: 1.5rem;
-  //   font-weight: 600;
-  //   letter-spacing: -0.075rem;
-  //   color: @clr-blue;
-  // }
+  &__unit {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.075rem;
+    color: @clr-blue;
+  }
 }
 
 .result {
