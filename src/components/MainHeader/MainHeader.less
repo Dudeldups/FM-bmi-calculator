@@ -1,14 +1,21 @@
 @import "../../less/abstracts/index.less";
 
 .main-header {
+  .mq(0 @bp-desktop, {
+    display: grid;
+    place-items: center;
+  });
+
+  .mq(@bp-desktop, {
+    margin-top: 6rem;
+  });
+
   &__title {
-    margin-inline: auto;
     max-width: 11ch;
   }
 
   &__desc {
     margin-top: .get-clamp(1.5rem, 2.2rem, 24rem, 40rem) [];
-    margin-inline: auto;
-    max-width: 70ch;
+    max-width: 44rem;
   }
 }

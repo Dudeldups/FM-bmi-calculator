@@ -32,7 +32,7 @@
     font-size: 3rem;
     letter-spacing: -0.15rem;
 
-    .mq(@bp-desktop, {
+    .mq(1200px, {
       font-size: 4rem;
       letter-spacing: -0.2rem;
     });
@@ -84,6 +84,12 @@
   &__number {
     font-size: 3rem;
     line-height: 110%;
+    letter-spacing: -0.15rem;
+
+    .mq(@bp-desktop, {
+      font-size: 4rem;
+      letter-spacing: -0.2rem;
+    });
   }
 
   &__desc {
