@@ -1,15 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Result from "../Result/Result";
 import "./Calculator.less";
 
 export default function Calculator() {
   const [unit, setUnit] = useState("metric");
+  const [inputData, setInputData] = useState({
+    "height-cm": "",
+    "height-ft": "",
+    "height-in": "",
+    "weight-kg": "",
+    "weight-st": "",
+    "weight-lbs": "",
+  });
+
+  useEffect(() => {
+    console.log(inputData);
+  }, [inputData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { type, id } = e.target;
+    const { type, id, value } = e.target;
     if (type === "radio") {
       id === "metric" ? setUnit("metric") : setUnit("imperial");
     } else if (type === "text") {
+      setInputData(prev => ({
+        ...prev,
+        [id]: value,
+      }));
     }
   };
 
@@ -59,6 +75,7 @@ export default function Calculator() {
                 id="height-cm"
                 maxLength={6}
                 onChange={handleChange}
+                value={inputData["height-cm"]}
                 className="text__input"
               />
               <span className="text__unit">cm</span>
@@ -75,6 +92,7 @@ export default function Calculator() {
                   id="height-ft"
                   maxLength={2}
                   onChange={handleChange}
+                  value={inputData["height-ft"]}
                   className="text__input"
                 />
                 <span className="text__unit">ft</span>
@@ -89,6 +107,7 @@ export default function Calculator() {
                   id="height-in"
                   maxLength={2}
                   onChange={handleChange}
+                  value={inputData["height-in"]}
                   className="text__input"
                 />
                 <span className="text__unit">in</span>
@@ -110,6 +129,7 @@ export default function Calculator() {
                 id="weight-kg"
                 maxLength={6}
                 onChange={handleChange}
+                value={inputData["weight-kg"]}
                 className="text__input"
               />
               <span className="text__unit">kg</span>
@@ -126,6 +146,7 @@ export default function Calculator() {
                   id="weight-st"
                   maxLength={6}
                   onChange={handleChange}
+                  value={inputData["weight-st"]}
                   className="text__input"
                 />
                 <span className="text__unit">st</span>
@@ -140,6 +161,7 @@ export default function Calculator() {
                   id="weight-lbs"
                   maxLength={6}
                   onChange={handleChange}
+                  value={inputData["weight-lbs"]}
                   className="text__input"
                 />
                 <span className="text__unit">lbs</span>
