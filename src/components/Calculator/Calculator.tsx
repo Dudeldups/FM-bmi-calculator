@@ -15,44 +15,48 @@ export default function Calculator() {
   });
 
   const convertInputs = (type: string, value: string) => {
-    const stringInput = value.replace(",", ".");
-    switch (type) {
-      case "height-cm":
-        const centimeter = parseFloat(stringInput);
-        const totalInches = centimeter / 2.54;
-        const feet = Math.floor(totalInches / 12);
-        const inches = Math.floor(totalInches - feet * 12);
-        setInputData(prev => {
-          return {
-            ...prev,
-            [type]: value,
-            "height-ft": feet >= 0 ? feet.toString() : "",
-            "height-in": inches >= 0 ? inches.toString() : "",
-          };
-        });
-        break;
-      case "weight-kg":
-        const kilogram = parseFloat(stringInput);
-        const totalPounds = kilogram * 2.20462;
-        const stone = Math.floor(totalPounds / 14);
-        const pounds = Math.floor(totalPounds - stone * 14);
-        setInputData(prev => {
-          return {
-            ...prev,
-            [type]: value,
-            "weight-st": stone >= 0 ? stone.toString() : "",
-            "weight-lbs": pounds >= 0 ? pounds.toString() : "",
-          };
-        });
-        break;
+    setInputData((prev: InputData) => {
+      const stringInput = value.replace(",", ".");
+      const numberInput = parseFloat(stringInput);
+      let updatedInputData = { ...prev, [type]: value };
 
-      default:
-        break;
-    }
+      switch (type) {
+        case "height-cm":
+          const cmToInches = numberInput / 2.54;
+          const cmFeet = Math.floor(cmToInches / 12);
+          const cmInches = Math.floor(cmToInches - cmFeet * 12);
+          updatedInputData["height-ft"] = cmFeet >= 0 ? cmFeet.toString() : "";
+          updatedInputData["height-in"] =
+            cmInches >= 0 ? cmInches.toString() : "";
+          break;
+        // case "height-ft":
+        //   const feet = parseFloat(stringInput);
+        //   const totalInches = centimeter / 2.54;
+        //   const feet = Math.floor(totalInches / 12);
+        //   const inches = Math.floor(totalInches - feet * 12);
+        //   updatedInputData["height-ft"] = feet >= 0 ? feet.toString() : "";
+        //   updatedInputData["height-in"] = inches >= 0 ? inches.toString() : "";
+        //   break;
+        case "weight-kg":
+          const kgToPounds = numberInput * 2.20462;
+          const kgStone = Math.floor(kgToPounds / 14);
+          const kgPounds = Math.floor(kgToPounds - kgStone * 14);
+          updatedInputData["weight-st"] =
+            kgStone >= 0 ? kgStone.toString() : "";
+          updatedInputData["weight-lbs"] =
+            kgPounds >= 0 ? kgPounds.toString() : "";
+          break;
+
+        default:
+          break;
+      }
+
+      return updatedInputData;
+    });
   };
 
   useEffect(() => {
-    console.log(inputData);
+    // console.log(inputData);
   }, [inputData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
