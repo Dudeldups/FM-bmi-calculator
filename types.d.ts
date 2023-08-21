@@ -9,7 +9,7 @@ type InputData = {
 
 type InputName = keyof InputData;
 
-type TextInputProps = {
+type NumberInputProps = {
   inputName: InputName;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputData: InputData;

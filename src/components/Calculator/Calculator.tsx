@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Result from "../Result/Result";
+import NumberInput from "../NumberInput/NumberInput";
 import "./Calculator.less";
 
 export default function Calculator() {
@@ -14,17 +15,33 @@ export default function Calculator() {
   });
 
   const convertInputs = (type: string, value: string) => {
+    const stringInput = value.replace(",", ".");
     switch (type) {
       case "height-cm":
-        const centimeter = parseInt(value);
+        const centimeter = parseFloat(stringInput);
         const totalInches = centimeter / 2.54;
         const feet = Math.floor(totalInches / 12);
         const inches = Math.floor(totalInches - feet * 12);
         setInputData(prev => {
           return {
             ...prev,
+            [type]: value,
             "height-ft": feet >= 0 ? feet.toString() : "",
             "height-in": inches >= 0 ? inches.toString() : "",
+          };
+        });
+        break;
+      case "weight-kg":
+        const kilogram = parseFloat(stringInput);
+        const totalPounds = kilogram * 2.20462;
+        const stone = Math.floor(totalPounds / 14);
+        const pounds = Math.floor(totalPounds - stone * 14);
+        setInputData(prev => {
+          return {
+            ...prev,
+            [type]: value,
+            "weight-st": stone >= 0 ? stone.toString() : "",
+            "weight-lbs": pounds >= 0 ? pounds.toString() : "",
           };
         });
         break;
@@ -42,11 +59,7 @@ export default function Calculator() {
     const { type, id, value } = e.target;
     if (type === "radio") {
       id === "metric" ? setUnit("metric") : setUnit("imperial");
-    } else if (type === "text") {
-      setInputData(prev => ({
-        ...prev,
-        [id]: value,
-      }));
+    } else if (type === "number") {
       convertInputs(id, value);
     }
   };
@@ -83,111 +96,51 @@ export default function Calculator() {
         </label>
       </div>
 
-      <div className="text">
-        <fieldset className="text__container">
+      <div className="number-container">
+        <fieldset className="number-container__group">
           <h3 className="text__type">Height</h3>
           {unit === "metric" ? (
-            <div className="text__input-wrapper">
-              <label htmlFor="height-cm" className="sr-only">
-                Height in centimeter
-              </label>
-              <input
-                type="text"
-                name="height-cm"
-                id="height-cm"
-                placeholder="0"
-                onChange={handleChange}
-                value={inputData["height-cm"]}
-                className="text__input"
-              />
-              <span className="text__unit">cm</span>
-            </div>
+            <NumberInput
+              inputName="height-cm"
+              handleChange={handleChange}
+              inputData={inputData}
+            />
           ) : (
-            <div className="text__inner">
-              <div className="text__input-wrapper">
-                <label htmlFor="height-ft" className="sr-only">
-                  Height feet
-                </label>
-                <input
-                  type="text"
-                  name="height-ft"
-                  id="height-ft"
-                  placeholder="0"
-                  onChange={handleChange}
-                  value={inputData["height-ft"]}
-                  className="text__input"
-                />
-                <span className="text__unit">ft</span>
-              </div>
-              <div className="text__input-wrapper">
-                <label htmlFor="height-in" className="sr-only">
-                  Height inches
-                </label>
-                <input
-                  type="text"
-                  name="height-in"
-                  id="height-in"
-                  placeholder="0"
-                  onChange={handleChange}
-                  value={inputData["height-in"]}
-                  className="text__input"
-                />
-                <span className="text__unit">in</span>
-              </div>
+            <div className="number-container__inner">
+              <NumberInput
+                inputName="height-ft"
+                handleChange={handleChange}
+                inputData={inputData}
+              />
+              <NumberInput
+                inputName="height-in"
+                handleChange={handleChange}
+                inputData={inputData}
+              />
             </div>
           )}
         </fieldset>
 
-        <fieldset className="text__container">
+        <fieldset className="number-container__group">
           <h3 className="text__type">Weight</h3>
           {unit === "metric" ? (
-            <div className="text__input-wrapper">
-              <label htmlFor="weight-kg" className="sr-only">
-                Weight in kilogram
-              </label>
-              <input
-                type="text"
-                name="weight-kg"
-                id="weight-kg"
-                placeholder="0"
-                onChange={handleChange}
-                value={inputData["weight-kg"]}
-                className="text__input"
-              />
-              <span className="text__unit">kg</span>
-            </div>
+            <NumberInput
+              inputName="weight-kg"
+              handleChange={handleChange}
+              inputData={inputData}
+            />
           ) : (
-            <div className="text__inner">
-              <div className="text__input-wrapper">
-                <label htmlFor="weight-st" className="sr-only">
-                  Weight stone
-                </label>
-                <input
-                  type="text"
-                  name="weight-st"
-                  id="weight-st"
-                  placeholder="0"
-                  onChange={handleChange}
-                  value={inputData["weight-st"]}
-                  className="text__input"
-                />
-                <span className="text__unit">st</span>
-              </div>
-              <div className="text__input-wrapper">
-                <label htmlFor="weight-lbs" className="sr-only">
-                  Weight pounds
-                </label>
-                <input
-                  type="text"
-                  name="weight-lbs"
-                  id="weight-lbs"
-                  placeholder="0"
-                  onChange={handleChange}
-                  value={inputData["weight-lbs"]}
-                  className="text__input"
-                />
-                <span className="text__unit">lbs</span>
-              </div>
+            <div className="number-container__inner">
+              <NumberInput
+                inputName="weight-st"
+                handleChange={handleChange}
+                inputData={inputData}
+              />
+              <NumberInput
+                inputName="weight-lbs"
+                handleChange={handleChange}
+                inputData={inputData}
+              />
             </div>
           )}
         </fieldset>

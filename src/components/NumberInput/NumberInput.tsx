@@ -1,28 +1,30 @@
-import "./TextInput.less";
+import "./NumberInput.less";
 
-export default function TextInput({
+export default function NumberInput({
   inputName,
   handleChange,
   inputData,
-}: TextInputProps) {
-  const getFullName = (name: string) => {
-    switch (name) {
-      case "height-cm":
+}: NumberInputProps) {
+  const unit = inputName.split("-")[1];
+
+  const getFullName = () => {
+    switch (unit) {
+      case "cm":
         return "centimeter";
         break;
-      case "height-ft":
+      case "ft":
         return "feet";
         break;
-      case "height-in":
+      case "in":
         return "inches";
         break;
-      case "weight-kg":
+      case "kg":
         return "kilogram";
         break;
-      case "weight-st":
+      case "st":
         return "stone";
         break;
-      case "weight-lbs":
+      case "lbs":
         return "pounds";
         break;
 
@@ -32,23 +34,22 @@ export default function TextInput({
     }
   };
 
-  const unit = inputName.split("-")[1];
-  const fullName = getFullName(inputName);
+  const fullName = getFullName();
 
   return (
-    <label htmlFor={inputName} className="text-input__label">
+    <label htmlFor={inputName} className="number-input__label">
       <span className="sr-only">{fullName}</span>
       <input
-        type="text"
+        type="number"
         name={inputName}
         id={inputName}
         placeholder="0"
         maxLength={6}
         onChange={handleChange}
         value={inputData[inputName]}
-        className="text-input__input"
+        className="number-input__input"
       />
-      <span className="text-input__unit">{unit}</span>
+      <span className="number-input__unit">{unit}</span>
     </label>
   );
 }
