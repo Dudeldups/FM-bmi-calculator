@@ -13,6 +13,27 @@ export default function Calculator() {
     "weight-lbs": "",
   });
 
+  const convertInputs = (type: string, value: string) => {
+    switch (type) {
+      case "height-cm":
+        const centimeter = parseInt(value);
+        const totalInches = centimeter / 2.54;
+        const feet = Math.floor(totalInches / 12);
+        const inches = Math.floor(totalInches - feet * 12);
+        setInputData(prev => {
+          return {
+            ...prev,
+            "height-ft": feet >= 0 ? feet.toString() : "",
+            "height-in": inches >= 0 ? inches.toString() : "",
+          };
+        });
+        break;
+
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     console.log(inputData);
   }, [inputData]);
@@ -26,6 +47,7 @@ export default function Calculator() {
         ...prev,
         [id]: value,
       }));
+      convertInputs(id, value);
     }
   };
 
@@ -73,7 +95,7 @@ export default function Calculator() {
                 type="text"
                 name="height-cm"
                 id="height-cm"
-                maxLength={6}
+                placeholder="0"
                 onChange={handleChange}
                 value={inputData["height-cm"]}
                 className="text__input"
@@ -90,7 +112,7 @@ export default function Calculator() {
                   type="text"
                   name="height-ft"
                   id="height-ft"
-                  maxLength={2}
+                  placeholder="0"
                   onChange={handleChange}
                   value={inputData["height-ft"]}
                   className="text__input"
@@ -105,7 +127,7 @@ export default function Calculator() {
                   type="text"
                   name="height-in"
                   id="height-in"
-                  maxLength={2}
+                  placeholder="0"
                   onChange={handleChange}
                   value={inputData["height-in"]}
                   className="text__input"
@@ -127,7 +149,7 @@ export default function Calculator() {
                 type="text"
                 name="weight-kg"
                 id="weight-kg"
-                maxLength={6}
+                placeholder="0"
                 onChange={handleChange}
                 value={inputData["weight-kg"]}
                 className="text__input"
@@ -144,7 +166,7 @@ export default function Calculator() {
                   type="text"
                   name="weight-st"
                   id="weight-st"
-                  maxLength={6}
+                  placeholder="0"
                   onChange={handleChange}
                   value={inputData["weight-st"]}
                   className="text__input"
@@ -159,7 +181,7 @@ export default function Calculator() {
                   type="text"
                   name="weight-lbs"
                   id="weight-lbs"
-                  maxLength={6}
+                  placeholder="0"
                   onChange={handleChange}
                   value={inputData["weight-lbs"]}
                   className="text__input"

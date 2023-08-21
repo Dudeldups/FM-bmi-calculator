@@ -64,6 +64,11 @@
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.075rem;
+
+    &::placeholder {
+      color: @clr-gunmetal;
+      opacity: 0.35;
+    }
   }
 
   &__unit {
@@ -77,8 +82,14 @@
 .result {
   color: white;
 
-  &__title {
+  &__title,
+  &__welcome-title {
     color: white;
+  }
+
+  &__welcome-title {
+    font-size: 1.5rem;
+    letter-spacing: -0.075rem;
   }
 
   &__number {
