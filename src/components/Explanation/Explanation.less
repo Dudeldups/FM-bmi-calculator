@@ -19,7 +19,19 @@
   });
 
   .mq(@bp-desktop, {
+position: relative;
     gap: 8rem;
+
+    &::before {
+      position: absolute;
+      content: "";
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      transform: translate(-10rem, -10rem);
+      background: url("/assets/images/pattern-curved-line-left.svg") no-repeat;
+      background-position: top right;
+    }
   });
 
   &__img {
