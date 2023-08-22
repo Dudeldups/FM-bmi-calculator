@@ -44,7 +44,7 @@ export default function NumberInput({
         name={inputName}
         id={inputName}
         placeholder="0"
-        maxLength={6}
+        min={0}
         onChange={handleChange}
         value={inputData[inputName]}
         className="number-input__input"

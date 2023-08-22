@@ -14,3 +14,7 @@ type NumberInputProps = {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputData: InputData;
 };
+
+type ResultProps = {
+  inputData: InputData;
+};

@@ -1,10 +1,14 @@
 import "./Result.less";
 
-type Props = {};
+export default function Result({ inputData }: ResultProps) {
+  const centimeter = parseFloat(inputData["height-cm"]);
+  const kilogram = parseFloat(inputData["weight-kg"]);
 
-export default function Result({}: Props) {
-  // const hasInputs = true;
-  const hasInputs = false;
+  const hasInputs = centimeter >= 100 && kilogram >= 30;
+
+  const BMI = Math.round((kilogram / Math.pow(centimeter / 100, 2)) * 10) / 10;
+  const normalMin = Math.round(18.5 * Math.pow(centimeter / 100, 2) * 10) / 10;
+  const normalMax = Math.round(25 * Math.pow(centimeter / 100, 2) * 10) / 10;
 
   return (
     <section className="result">
@@ -12,7 +16,7 @@ export default function Result({}: Props) {
         {hasInputs ? (
           <>
             <h3 className="result__title">Your BMI is...</h3>
-            <p className="result__number">23.4</p>
+            <p className="result__number">{BMI}</p>
           </>
         ) : (
           <>
@@ -27,7 +31,11 @@ export default function Result({}: Props) {
         <p className="result__desc">
           Your BMI suggests you’re a healthy weight. Your ideal weight is
           between
-          <span className="bold"> 63.3kgs - 85.2kgs</span>.
+          <span className="bold">
+            {" "}
+            {normalMin}kgs - {normalMax}kgs
+          </span>
+          .
         </p>
       )}
     </section>

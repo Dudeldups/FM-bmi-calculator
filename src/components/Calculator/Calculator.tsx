@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Result from "../Result/Result";
 import NumberInput from "../NumberInput/NumberInput";
 import "./Calculator.less";
@@ -14,10 +14,13 @@ export default function Calculator() {
     "weight-lbs": "",
   });
 
+  useEffect(() => {
+    // console.log(inputData);
+  }, [inputData]);
+
   const convertInputs = (type: string, value: string) => {
     setInputData((prev: InputData) => {
-      const stringInput = value.replace(",", ".");
-      const numberInput = parseFloat(stringInput);
+      const numberInput = parseFloat(value);
       let updatedInputData = { ...prev, [type]: value };
 
       switch (type) {
@@ -29,14 +32,20 @@ export default function Calculator() {
           updatedInputData["height-in"] =
             cmInches >= 0 ? cmInches.toString() : "";
           break;
-        // case "height-ft":
-        //   const feet = parseFloat(stringInput);
-        //   const totalInches = centimeter / 2.54;
-        //   const feet = Math.floor(totalInches / 12);
-        //   const inches = Math.floor(totalInches - feet * 12);
-        //   updatedInputData["height-ft"] = feet >= 0 ? feet.toString() : "";
-        //   updatedInputData["height-in"] = inches >= 0 ? inches.toString() : "";
-        //   break;
+
+        case "height-ft":
+          const ftToCm =
+            numberInput * 12 + parseFloat(updatedInputData["height-in"]);
+          updatedInputData["height-cm"] = ftToCm >= 0 ? ftToCm.toString() : "";
+          break;
+
+        case "height-in":
+          const totalInches =
+            numberInput + parseFloat(updatedInputData["height-ft"]) * 12;
+          const inToCm = Math.round(totalInches * 2.54);
+          updatedInputData["height-cm"] = inToCm >= 0 ? inToCm.toString() : "";
+          break;
+
         case "weight-kg":
           const kgToPounds = numberInput * 2.20462;
           const kgStone = Math.floor(kgToPounds / 14);
@@ -47,6 +56,19 @@ export default function Calculator() {
             kgPounds >= 0 ? kgPounds.toString() : "";
           break;
 
+        case "weight-st":
+          const stToKg =
+            numberInput * 14 + parseFloat(updatedInputData["weight-lbs"]);
+          updatedInputData["weight-kg"] = stToKg >= 0 ? stToKg.toString() : "";
+          break;
+
+        case "weight-lbs":
+          const totalPounds =
+            numberInput + parseFloat(updatedInputData["weight-st"]) * 14;
+          updatedInputData["weight-kg"] =
+            totalPounds >= 0 ? totalPounds.toString() : "";
+          break;
+
         default:
           break;
       }
@@ -55,14 +77,10 @@ export default function Calculator() {
     });
   };
 
-  useEffect(() => {
-    // console.log(inputData);
-  }, [inputData]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { type, id, value } = e.target;
     if (type === "radio") {
-      id === "metric" ? setUnit("metric") : setUnit("imperial");
+      setUnit(id);
     } else if (type === "number") {
       convertInputs(id, value);
     }
@@ -150,7 +168,7 @@ export default function Calculator() {
         </fieldset>
       </div>
 
-      <Result />
+      <Result inputData={inputData} />
     </section>
   );
 }
