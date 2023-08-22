@@ -43,7 +43,7 @@ Add the individual's healthy weight range based on the lower and upper BMI categ
 
 ### Links
 
-<!-- - [Solution on Frontend Mentor]() -->
+- [Solution on Frontend Mentor](https://www.frontendmentor.io/solutions/reacttsless-bmi-calculator-DfrVhETGpR)
 
 - [Live site](https://fm-bmi-calculator-9000.netlify.app/)
 
@@ -51,7 +51,7 @@ Add the individual's healthy weight range based on the lower and upper BMI categ
 
 #### Desktop
 
-![Solution]()
+![Solution](https://github.com/Dudeldups/FM-bmi-calculator/blob/main/screenshots/solution-desktop.png)
 
 ## My process
 
