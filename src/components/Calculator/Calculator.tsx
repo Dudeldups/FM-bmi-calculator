@@ -18,6 +18,16 @@ export default function Calculator() {
     // console.log(inputData);
   }, [inputData]);
 
+  const convertKgToStoneAndPounds = (kg: number) => {
+    const totalPounds = kg * 2.20462;
+    const stone = Math.floor(totalPounds / 14);
+    const pounds = Math.floor(totalPounds - stone * 14);
+    return {
+      stone,
+      pounds,
+    };
+  };
+
   const convertInputs = (type: string, value: string) => {
     setInputData((prev: InputData) => {
       const numberInput = parseFloat(value);
@@ -26,11 +36,10 @@ export default function Calculator() {
       switch (type) {
         case "height-cm":
           const cmToInches = numberInput / 2.54;
-          const cmFeet = Math.floor(cmToInches / 12);
-          const cmInches = Math.floor(cmToInches - cmFeet * 12);
-          updatedInputData["height-ft"] = cmFeet >= 0 ? cmFeet.toString() : "";
-          updatedInputData["height-in"] =
-            cmInches >= 0 ? cmInches.toString() : "";
+          const feet = Math.floor(cmToInches / 12);
+          const inches = Math.floor(cmToInches - feet * 12);
+          updatedInputData["height-ft"] = feet >= 0 ? feet.toString() : "";
+          updatedInputData["height-in"] = inches >= 0 ? inches.toString() : "";
           break;
 
         case "height-ft":
@@ -47,13 +56,9 @@ export default function Calculator() {
           break;
 
         case "weight-kg":
-          const kgToPounds = numberInput * 2.20462;
-          const kgStone = Math.floor(kgToPounds / 14);
-          const kgPounds = Math.floor(kgToPounds - kgStone * 14);
-          updatedInputData["weight-st"] =
-            kgStone >= 0 ? kgStone.toString() : "";
-          updatedInputData["weight-lbs"] =
-            kgPounds >= 0 ? kgPounds.toString() : "";
+          const { stone, pounds } = convertKgToStoneAndPounds(numberInput);
+          updatedInputData["weight-st"] = stone >= 0 ? stone.toString() : "";
+          updatedInputData["weight-lbs"] = pounds >= 0 ? pounds.toString() : "";
           break;
 
         case "weight-st":
@@ -168,7 +173,11 @@ export default function Calculator() {
         </fieldset>
       </div>
 
-      <Result inputData={inputData} />
+      <Result
+        inputData={inputData}
+        unit={unit}
+        convertKgToStoneAndPounds={convertKgToStoneAndPounds}
+      />
     </section>
   );
 }

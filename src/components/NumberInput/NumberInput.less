@@ -8,7 +8,7 @@
   &__input {
     margin-top: 0.5rem;
     width: 100%;
-    padding: 1.25rem 4rem 1.25rem 1.5rem;
+    padding: 1.25rem .get-clamp(2rem, 4rem, 20rem, 23.5rem) [] 1.25rem 1.5rem;
     border: 0.0625rem solid @clr-borders;
     border-radius: 0.75rem;
     cursor: pointer;
@@ -21,7 +21,7 @@
   &__unit {
     position: absolute;
     top: 50%;
-    right: 1.5rem;
+    right: .get-clamp(1rem, 1.5rem, 20rem, 23.5rem) [];
     transform: translateY(-50%);
     pointer-events: none;
   }

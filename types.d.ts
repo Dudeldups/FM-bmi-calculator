@@ -17,4 +17,9 @@ type NumberInputProps = {
 
 type ResultProps = {
   inputData: InputData;
+  unit: string;
+  convertKgToStoneAndPounds: (kg: number) => {
+    stone: number;
+    pounds: number;
+  };
 };

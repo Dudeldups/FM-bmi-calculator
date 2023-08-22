@@ -1,14 +1,31 @@
 import "./Result.less";
 
-export default function Result({ inputData }: ResultProps) {
+export default function Result({
+  inputData,
+  unit,
+  convertKgToStoneAndPounds,
+}: ResultProps) {
   const centimeter = parseFloat(inputData["height-cm"]);
   const kilogram = parseFloat(inputData["weight-kg"]);
+
+  const weightToString = (weight: number) => {
+    if (unit === "metric") {
+      return `${weight} kg`;
+    } else if (unit === "imperial") {
+      const { stone, pounds } = convertKgToStoneAndPounds(weight);
+      return `${stone} st ${pounds} lbs`;
+    }
+  };
 
   const hasInputs = centimeter >= 100 && kilogram >= 30;
 
   const BMI = Math.round((kilogram / Math.pow(centimeter / 100, 2)) * 10) / 10;
-  const normalMin = Math.round(18.5 * Math.pow(centimeter / 100, 2) * 10) / 10;
-  const normalMax = Math.round(25 * Math.pow(centimeter / 100, 2) * 10) / 10;
+  const normalMin = weightToString(
+    Math.round(18.5 * Math.pow(centimeter / 100, 2) * 10) / 10
+  );
+  const normalMax = weightToString(
+    Math.round(25 * Math.pow(centimeter / 100, 2) * 10) / 10
+  );
 
   return (
     <section className="result">
@@ -33,7 +50,7 @@ export default function Result({ inputData }: ResultProps) {
           between
           <span className="bold">
             {" "}
-            {normalMin}kgs - {normalMax}kgs
+            {normalMin} - {normalMax}
           </span>
           .
         </p>
