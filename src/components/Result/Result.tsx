@@ -27,6 +27,15 @@ export default function Result({
     Math.round(25 * Math.pow(centimeter / 100, 2) * 10) / 10
   );
 
+  const getResult = () => {
+    if (BMI < 18.5) return "underweight";
+    else if (BMI < 25) return "a healthy weight";
+    else if (BMI < 30) return "overweight";
+    else return "obese";
+  };
+
+  const resultInWords = getResult();
+
   return (
     <section className="result">
       <header className="result__container">
@@ -46,8 +55,7 @@ export default function Result({
       </header>
       {hasInputs && (
         <p className="result__desc">
-          Your BMI suggests you’re a healthy weight. Your ideal weight is
-          between
+          Your BMI suggests you’re {resultInWords}. Your ideal weight is between
           <span className="bold">
             {" "}
             {normalMin} - {normalMax}

@@ -7,7 +7,7 @@ This is a solution to the [Body Mass Index Calculator challenge on Frontend Ment
 - [Overview](#overview)
   - [The challenge](#the-challenge)
     - [Expected behaviour](#expected-behaviour)
-    <!-- - [Added features](#added-features) -->
+    - [Added features](#added-features)
   - [Links](#links)
   - [Screenshot](#screenshot)
 - [My process](#my-process)
@@ -37,7 +37,9 @@ Below you will find the BMI ranges and their weight classifications. Based on th
 
 Add the individual's healthy weight range based on the lower and upper BMI categorisations and the person's height.
 
-<!-- ### Added features -->
+### Added features
+
+- Automatically updates both metric and imperial input fields as the user enters a number
 
 ### Links
 
