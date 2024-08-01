@@ -5,6 +5,6 @@ describe("App", () => {
   it("renders", () => {
     render(<App />);
 
-    expect(screen.queryByText("Enter your details below")).toBeVisible();
+    expect(screen.queryByText("Body Mass Index Calculator")).toBeVisible();
   });
 });
